@@ -8,7 +8,7 @@ export async function register(req: Request, res: Response): Promise<void> {
     await UserModel.create(user);
     res.status(201).send("User registered successfully");
   } catch (err) {
-    res.status(500).send(getErrorMessage(err));
+    throw err;
   }
 }
 
@@ -23,6 +23,6 @@ export async function login(req: Request, res: Response): Promise<void> {
       res.status(401).send("Invalid username or password");
     }
   } catch (err) {
-    res.status(500).send(getErrorMessage(err));
+    throw err;
   }
 }
